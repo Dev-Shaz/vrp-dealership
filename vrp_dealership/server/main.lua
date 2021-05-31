@@ -20,7 +20,7 @@ AddEventHandler("vRP:dealership", function(spawncode)
                 if #pvehicle > 0 then
                     vRPclient.notify(source, {"~r~Vehicle already owned."})
                 else
-                    if vRP.tryFullPayment(user_id, v.price) then
+                    if vRP.tryFullPayment({user_id, v.price}) then
                        vRP.getUserIdentity(user_id, function(identity)					
                            MySQL.execute("vRP/add_vehicle", {user_id = user_id, vehicle = vehicle, registration = "P "..identity.registration})
                        end)
